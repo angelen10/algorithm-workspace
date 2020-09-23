@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+/Users/angelen/Documents/algorithm-workspace/.metadata/.plugins/org.eclipse.jdt.core
+367369498.index
