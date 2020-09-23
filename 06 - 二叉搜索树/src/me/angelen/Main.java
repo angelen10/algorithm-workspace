@@ -8,10 +8,10 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		testPreorderTraversal();
+		tesPreorderTraversal();
 	}
 	
-    static void testPreorderTraversal() {
+    static void tesPreorderTraversal() {
         Integer data[] = new Integer[] { 7, 4, 2, 1, 3, 5, 9, 8, 11, 10, 12 };
         BinarySearchTree<Integer> bst = new BinarySearchTree<>(new Comparator<Integer>() {
 
@@ -24,7 +24,22 @@ public class Main {
             bst.add(data[i]);
         }
         BinaryTrees.println(bst);
+        
+        System.out.print("前序遍历：");
         bst.preorderTraversal();
+        System.out.println();
+        
+        System.out.print("中序遍历：");
+        bst.inorderTraversal();
+        System.out.println();
+        
+        System.out.print("后序遍历：");
+        bst.postorderTraversal();
+        System.out.println();
+        
+        System.out.print("层序遍历：");
+        bst.levelOrderTraversal();
+        System.out.println();
     }
 	
 	static void test() {

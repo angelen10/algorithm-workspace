@@ -1,6 +1,8 @@
 package me.angelen;
 
 import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import me.angelen.printer.BinaryTreeInfo;
 
@@ -99,6 +101,36 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
         preorderTraversal(node.left);
         preorderTraversal(node.right);
     }
+    
+    // 中序遍历
+    public void inorderTraversal() {
+        inorderTraversal(root);
+    }
+
+    private void inorderTraversal(Node<E> node) {
+        // 当节点为空，递归结束
+        if (node == null) {
+            return;
+        }
+        inorderTraversal(node.left);
+        System.out.print(node.element + "、");
+        inorderTraversal(node.right);
+    }
+    
+    // 后序遍历
+    public void postorderTraversal() {
+        postorderTraversal(root);
+    }
+
+    private void postorderTraversal(Node<E> node) {
+        // 当节点为空，递归结束
+        if (node == null) {
+            return;
+        }
+        postorderTraversal(node.left);
+        postorderTraversal(node.right);
+        System.out.print(node.element + "、");
+    }
 	
 	private static class Node<E> {
 		E element;
@@ -112,6 +144,30 @@ public class BinarySearchTree<E> implements BinaryTreeInfo {
 			this.parent = parent;
 		}
 	}
+	
+    // 层序遍历
+    public void levelOrderTraversal() {
+        if (root == null) return;
+        
+        Queue<Node<E>> queue = new LinkedList<>();
+        queue.offer(root); // 入队
+        
+        while (!queue.isEmpty()) {
+            // 当队列不为空时候，循环做以下操作
+            Node<E> node = queue.poll(); // 出队
+            System.out.print(node.element + "、"); // 打印刚出队的节点
+            
+            // 如果有左节点，则将左节点入队
+            if (node.left != null) {
+                queue.offer(node.left);
+            }
+            
+            // 如果有右节点，则将右节点入队
+            if (node.right != null) {
+                queue.offer(node.right);
+            }
+        }
+    }
 
 	@Override
 	public Object root() {
